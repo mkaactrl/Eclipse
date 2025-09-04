@@ -1,8 +1,8 @@
 const readline = require('readline');
 const { EclipseRuntime } = require('./library/MainC.JS');
-require('./library/ExtraC.JS');
-require('./library/OtherC.JS');
-require('./library/SN.JS');
+require('./ExtraC.JS');
+require('./OtherC.JS');
+require('./SN.JS');
 
 const e = new EclipseRuntime();
 
