@@ -152,20 +152,21 @@ class EclipseRuntime {
 }
 
 // ---------------- Example Usage ----------------
-(async () => {
-    const e = new EclipseRuntime();
-
-    await e.process(`<[
-        var.new("x")="Hello",
-        var.new("y")="World",
-        n.str!=<[(d.dh("a","b")), (dh.m("c","d","e"))]>,
-        <line:x>,
-        <line:y>,
-        <line:n.str>,
-        <dline:"Debug check">,
-        n.str!=<[(d.dh("f","g"))]>,
-        <line:n.str>,
-        n.str!=<[(dh.m("h","i","j"))]>,
-        <line:n.str>
-    ]>`);
-})();
+if (require.main === module) {
+    (async () => {
+        const e = new EclipseRuntime();
+        await e.process(`<[
+            var.new("x")="Hello",
+            var.new("y")="World",
+            n.str!=<[(d.dh("a","b")), (dh.m("c","d","e"))]>,
+            <line:x>,
+            <line:y>,
+            <line:n.str>,
+            <dline:"Debug check">,
+            n.str!=<[(d.dh("f","g"))]>,
+            <line:n.str>,
+            n.str!=<[(dh.m("h","i","j"))]>,
+            <line:n.str>
+        ]>`);
+    })();
+}
