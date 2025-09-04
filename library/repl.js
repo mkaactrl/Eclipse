@@ -16,7 +16,8 @@ rl.prompt();
 
 rl.on('line', async (line) => {
     try {
-        await e.process(line); // interpret your Eclipse code dynamically
+        // wrap single lines in a <[]> container so line/dline are processed
+        await e.process(`<[${line}]>`);
     } catch(err) {
         console.error('Error:', err);
     }
