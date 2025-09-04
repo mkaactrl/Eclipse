@@ -136,7 +136,7 @@ class EclipseRuntime {
 
         if (val.includes('dh.m')) {
             const match = val.match(/dh\.m\((.*?)\)/);
-            if (match) {
+             if (match) {
                 const args = match[1].split(',').map(v => v.trim());
                 return this.dh_m(...args);
             }
@@ -150,6 +150,8 @@ class EclipseRuntime {
         return val;
     }
 }
+// export the class for REPL usage
+module.exports = { EclipseRuntime };
 
 // ---------------- Example Usage ----------------
 if (require.main === module) {
