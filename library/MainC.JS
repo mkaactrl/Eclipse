@@ -105,18 +105,21 @@ class EclipseRuntime {
             }
 
             // line output
-            let lineMatch = part.match(/<line:(.+)>/);
-            if (lineMatch) {
-                this.line(lineMatch[1]);
-                continue;
-            }
+            let lineMatch = part.match(/<line:(.*?)>/);
+if (lineMatch) {
+    let text = lineMatch[1].trim();
+    text = text.replace(/^"(.*)"$/, '$1'); // remove quotes if present
+    this.line(text);
+    continue;
+}
 
-            let dlineMatch = part.match(/<dline:(.+)>/);
-            if (dlineMatch) {
-                this.dline(dlineMatch[1]);
-                continue;
-            }
-
+let dlineMatch = part.match(/<dline:(.*?)>/);
+if (dlineMatch) {
+    let text = dlineMatch[1].trim();
+    text = text.replace(/^"(.*)"$/, '$1'); // remove quotes
+    this.dline(text);
+    continue;
+}
             results.push(await this.evalValue(part));
         }
 
